@@ -1,4 +1,3 @@
-
 # Si scriva una funzione verifica_liste che riceve due liste L1 ed L2 di interi e un intero k e restituisce True se e solo se L1
 # contiene una sottolista di lunghezza k i cui elementi sono presenti in L2 nello stesso ordine (anche se in posizioni non
 # consecutive).
@@ -6,61 +5,40 @@
 # lista L1 contiene la sottolista [1, 2, 5] i cui elementi sono presenti in L2 nello stesso ordine.
 
 
-def verifica_liste(L1, L2, k):
-    # ultimo indice di L2 in cui hai trovato lo stesso numero in L1
-    # inizializza -1 perche' ogni volta aggiungiamo 1, quindi indice parte da 0
-    # e noi vogliamo che parta da 0, cioe' proprio dall'inizio
-    last_i = -1
-    # quanti match consecutivi hai trovato in L1 che esistono in L2 in modo non consecutivo
-    n_matches = 0
-    matches = []
 
-    for i in range(len(L1)):
-        # numero attuale
-        l1 = L1[i]
-        L2_right =  L2[last_i+1:]
-        # il numero attuale esiste in L2, partendo dall'indice in cui hai trovato l'ultimo match?
-        is_match_right = l1 in L2_right
-        print(f'{l1} in {L2_right}? {is_match_right}')
-
-        if is_match_right:
-            # partendo da dove hai trovato l'ultimo match, ottieni l'indice dell'attuale match
-            # che diventera' il nuovo ultimo indice
-            last_i = L2.index(l1, last_i+1)
-            matches.append(l1)
-            n_matches += 1
-            if n_matches == k: return True
-        # altrimenti resetta l'ultimo indice (cioe' parti dall'inizio)
-        # resetta il numero di match, vuol dire che si ricomincia a contare da capo
-        # se non c'e' un match nella sottolista, e' probabile che ci sia partendo dall'inizio
-
-        else:
-            L2_left = L2[0:last_i]
-            # se questo numero non e' nella sottolista di L2, allora prendi l'altra sottolista dall'inizio
-            is_match_left = l1 in L2_left
-            i_match_left = L2.index(l1, 0, last_i)
-            print(f'..ma {l1} in {L2[:last_i]}')
-            # se c'e' un match adesso, allora parti da qui
-
-            # if is_match_left and i_match_left > last_i:
-            #     last_i = i_match_left
-            #     matches.append(l1)
-            #     n_matches = 1
-            #     if n_matches == k: return True
-            # # altrimenti ricomincia veramente da 0
-            # else:
-            #     last_i = -1
-            #     n_matches = 0
-            last_i = -1
-            n_matches = 0
-        print('\n')
-
-        # print(matches)
+def verifica_liste(l1,l2,k):
+    # itera dall'inizio e fermati all'inizio dell'ultima sottolista
+    for i in range(len(l1)-k+1):
+        # seleziona sottoliste di k elementi ciascuna
+        # poi controllale una per una
+        if sottolista_trovata(l1[i:i+k],l2):
+            return True
+    # se nessuna sottolista di k elementi di l1 contiene elementi non consecutivi (ma con indice crescente) in l2
     return False
 
 
-
-
+def sottolista_trovata(l_target,l2):
+    j=0
+    matches=[]
+    # per ogni elemento in l1
+    for elem in l_target:
+        trovato=False
+        # itera su l2 finche' non hai trovato un match
+        while not trovato and j<len(l2):
+            # se l'elemento attuale di l1 matcha un elemento di l2
+            # (cioe' se l'elemento generico di l1 esiste in l2)
+            if elem==l2[j]:
+                matches.append(elem)
+                # significa che esci dal loop perche' hai trovato il match
+                trovato=True
+            j+=1
+        # se non hai trovato un match dopo aver iterato tutto l2, allora l'elemento non esiste in l2
+        if not trovato:
+            return False
+    print(matches)
+    # hai trovato una sottolista (quindi elementi consecutivi) di l1
+    # i cui elementi non sono necessariamente consecutivi in l2 (quindi con indice crescente in l2)
+    return True
 
 
 
@@ -69,48 +47,3 @@ L2 = [8, 1, 7, 4, 2, 6, 3, 5, 4]
 k = 3
 
 print( verifica_liste(L1, L2, k) )
-
-
-
-
-
-
-
-# # SOTTOLISTA di L1: 1, 2, 5
-# # EXPECTED OUTPUT: True
-# L1 = [3, 1, 2, 5, 7, 3, 5, 3]
-# L2 = [8, 1, 7, 4, 2, 6, 3, 5, 4]
-# k = 3
-#
-# # SOTTOLISTA di L1: 9, 7, 5
-# # EXPECTED OUTPUT: False
-# # L1 = [6, 2, 9, 7, 5, 4, 7, 0]
-# # L2 = [5, 9, 3, 7, 3, 1, 5]
-# # k = 4
-#
-# # SOTTOLISTA di L1: 9, 7, 5
-# # EXPECTED OUTPUT: True
-# # L1 = [6, 2, 9, 7, 5, 4, 7, 0]
-# # L2 = [5, 9, 3, 7, 3, 1, 5]
-# # k = 3
-#
-#
-# # SOTTOLISTA di L1: 7, 9
-# # EXPECTED OUTPUT: False
-# # L1 = [1, 5, 6, 0, 7, 9, 3, 4]
-# # L2 = [7, 5, 7, 9, 1]
-# # k = 3
-#
-#
-# # SOTTOLISTA di L1: 7, 9
-# # EXPECTED OUTPUT: True
-# # L1 = [1, 5, 6, 0, 7, 9, 3, 4]
-# # L2 = [7, 5, 7, 9, 1]
-# # k = 2
-#
-#
-# # L1 = [5, 6, 9, 4, 8]
-# # L2 = [3, 6, 1]
-# # k = 3
-#
-# print( verifica_lista(L1, L2, k) )
