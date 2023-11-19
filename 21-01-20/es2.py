@@ -35,7 +35,6 @@ def filtra_lista(L1):
             if (i-x >= 0) or (i+x <= len(L1)-1):
                 sottolista_sinistra = L1[i-x:i]
                 sottolista_destra = L1[i+1:i+x+1]
-                print(sottolista_sinistra, x, sottolista_destra)
                 if sottolista_valida(sottolista_sinistra) and sottolista_valida(sottolista_destra):
                     L2.append(x)
                 # se anche una sola sottolista non e' valida (cioe' con almeno un elemento diverso da 0 o vuota)
