@@ -15,7 +15,7 @@
 
 def esiste_lettera_in_stringhe(l,stringhe):
     for stringa in stringhe:
-        # se la lettera della stringa attuale esiste in un'altra prossima stringa 
+        # se la lettera della stringa attuale esiste in un'altra prossima stringa
         if l in stringa:
             return True
     return False
@@ -25,11 +25,11 @@ def verifica_lista(L,k):
     # itera fino alla lunghezza di L meno k
     for i in range(len(L)-k):
         # per ogni lettera della stringa attuale
-        prossime_stringhe = L[i + 1:i + k + 1]
+        prossime_stringhe = L[i+1:i+k+1]
         # L[i] e' la stringa attuale, testiamo che ogni lettera di questa stringa non esiste in tutte le altre stringhe
         for l in L[i]:
             # seleziona la sottolista composta da i prossimi k elementi
-            if esiste_lettera_in_stringhe(l, prossime_stringhe):
+            if esiste_lettera_in_stringhe(l,prossime_stringhe):
                 return False
     # vuol dire che non c'e' nessuna lettera in comune tra l'attuale stringa e le prossime stringhe
     return True
