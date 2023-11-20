@@ -35,7 +35,6 @@ def sottoliste_sono_strett_crescenti(sottoliste):
             # se trovi un valore che e' maggiore dell'ultimo, allora la sottolista finora e' strettamente crescente
             # quindi questo valore attuale diventa l'ultimo nella prossima iterazione
             if sottolista[i] > ultimo_numero:
-                print(ultimo_numero,sottolista[i])
                 ultimo_numero = sottolista[i]
             # se ho trovato almeno un caso di valori non strettamente crescenti, esco dal loop
             # perche' questo mi basta per dire che l'intera sottolista NON e' strettamente crescente
