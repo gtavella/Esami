@@ -19,7 +19,7 @@ def crea_sottoliste(L,k):
 
 
 
-def sottoliste_sono_strett_crescenti(sottoliste):
+def esiste_sottolista_strett_crescente(sottoliste):
     # itera per ogni sottolista
     for sottolista in sottoliste:
         # itera nella sottolista fin quando non trovi almeno due valori che NON sono strettamente crescenti
@@ -42,18 +42,21 @@ def sottoliste_sono_strett_crescenti(sottoliste):
                 # esco dal while loop
                 strettamente_crescenti = False
             i += 1
-        # se esco dal loop con ancora strettamente crescenti vero, questo significa che l'intera sottolista e' strettamente crescente,
-        # quindi almeno una sottolista non non soddisfa la condizione
+        # siccome per soddisfare la condizione richiesta nella traccia, nessuna sottolista puo' avere valori strettamente crescenti
+        # se esco dal while loop (cioe' ho iterato per tutta la sottolista) e mi dice che tutti i valori erano strettamente crescenti, 
+        # allora vuol dire che esiste almeno una sottolista i cui valori sono tutti strettamente crescenti, il che e' proprio quello 
+        # che non voglio si verifichi. Quindi ritorna vero, cioe' esiste almeno una sottolista strettamente crescente 
         if strettamente_crescenti:
             return True
-    # significa che hai verificato tutte le sottoliste, e nessuna sottolista ha valori strettamente crescenti
+    # significa che hai verificato tutte le sottoliste, e nessuna sottolista ha valori strettamente crescenti,
+    # cioe' che non ne esiste nessuna che abbia valori strettamente crescenti 
     return False
 
 
 
 def verifica_lista(L,k):
     sottoliste = crea_sottoliste(L,k)
-    if not sottoliste_sono_strett_crescenti(sottoliste):
+    if not esiste_sottolista_strett_crescente(sottoliste):
         return True
     return False
 
