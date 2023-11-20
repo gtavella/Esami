@@ -54,7 +54,6 @@ def sottoliste_sono_strett_crescenti(sottoliste):
 
 def verifica_lista(L,k):
     sottoliste = crea_sottoliste(L,k)
-    print(sottoliste)
     if not sottoliste_sono_strett_crescenti(sottoliste):
         return True
     return False
