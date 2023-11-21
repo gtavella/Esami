@@ -12,7 +12,7 @@ def hanno_sottoliste_uguali(lista1, lista2):
     # itera per ogni elemento di lista1
     # ogni elemento nella lista1 deve essere all'elemento allo stesso indice in lista2
     for i in range(len(lista1)):
-        # se esiste almeno un elemento all'indice i che non e' diverso dall'elemento allo stesso indice in lista2
+        # se esiste almeno un elemento all'indice i che e' diverso dall'elemento allo stesso indice in lista2
         if lista1[i] != lista2[i]:
             return False
     return True
