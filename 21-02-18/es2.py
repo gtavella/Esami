@@ -31,7 +31,6 @@ def massimi_sequenze(n,k,L1):
         sottoliste.append(L1[i:i+k])
         # avanza l'indice mobile di k
         i += k
-
     # ora itera nelle sottoliste e trova il massimo elemento all'indice j
     for j in range(k):
         # tutti i numeri in un certa posizione j nelle sottoliste
@@ -40,11 +39,11 @@ def massimi_sequenze(n,k,L1):
         for sottolista in sottoliste:
             # il numero che corrisponde alla sottolista attuale
             numeri_in_posizione_j.append(sottolista[j])
-        # solo dopo che hai iterato, per la stessa posizione, in tutte le sottoliste, solo adesso 
+        # solo dopo che hai iterato, per la stessa posizione, in tutte le sottoliste, solo adesso
         # trova il massimo e salvalo nella posizione j di L2
         L2[j] = trova_massimo(numeri_in_posizione_j)
     return L2
-    
+
 
 
 n = 4
