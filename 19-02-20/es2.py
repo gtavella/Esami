@@ -34,6 +34,7 @@ def verifica_liste(L1,L2,k):
                 return True
             j += 1
     # se dopo aver comparato tutte le sottoliste di L1 ed L2 non ne esiste nessuna uguale, allora ritorna falso
+    # assunzione: i valori di questa variabile sono sempre booleani, quindi o vero o falso
     if not esiste_sottolista_uguale:
         return False
 
