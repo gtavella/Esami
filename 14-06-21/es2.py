@@ -20,9 +20,9 @@ def lettere_comuni(L):
     stringa_campione = L[0]
     # inizializzo ad 1 (cioe' comincio dal secondo elemento incluso della lista di stringhe)
     # perche' ho gia' selezionato il primo elemento
-    j = 1
     # itera per ogni lettera nella stringa campione / selezionata
     for i in range(len(stringa_campione)):
+        j = 1
         # ogni lettera della stringa campione che andremo a testare contro tutte le altre stringhe della lista
         lettera = stringa_campione[i]
         # per ogni lettera, sovrascrivo il valore di questa variabile, che poi mi permette di continuare o uscire dal while loop
@@ -42,5 +42,6 @@ def lettere_comuni(L):
 
 
 L = ['abc', 'bdecf', 'cabe', 'bcfeg']
+# L = ['abc', 'a', 'a', 'a']
 
 print(lettere_comuni(L))
