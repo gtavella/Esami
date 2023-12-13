@@ -10,15 +10,15 @@
 def verifica_coppie(L,k):
     cont=1
     prec=L[0]
-    for i in range(1, len(L)):
-        if L[i] == prec:
+    for attuale in L[1:]:
+        if attuale == prec:
             cont += 1
             if cont == k:
-                return L[i]
+                return attuale
         else:
-            prec=L[i]
+            prec=attuale
             cont=1
     return -1
 
 
-# print(verifica_coppie( [5, 5, 7, 1, 1, 7, 5, 7, 5, 5, 5, 1, 1, 3], 3))
+print(verifica_coppie( [5, 5, 7, 1, 1, 7, 5, 7, 5, 5, 5, 1, 1, 3], 3))
