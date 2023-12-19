@@ -8,6 +8,9 @@
 # sono 12, 24 e 24, rispettivamente, che sono multipli di 3.
 
 
+# ogni volta che la traccia ti chiede di trovare le sottoliste, capisci di quanto e' l'incremento (o il passo)
+# per trovare la sottolista generica
+
 
 def calcola_lista(L,x):
     ret=[]
@@ -29,3 +32,21 @@ def somma_e_multiplo(L,x):
 
 
 # print(calcola_lista([4, 3, 5, 2, 4, 6, 9, 9, 6], 3))
+
+
+
+# funzione any: return False se non trovi un True
+# funzione all: return True se non trovo un False
+
+
+
+def calcola_lista2(L,x):
+    ret=[]
+    for i in range(len(L)-x+1):
+        sottolista=L[i:i+x]
+        if all(elem>=x for elem in sottolista) and sum(sottolista)%x==0:
+            ret.append(sottolista)
+    return ret
+
+
+print(calcola_lista2([4, 3, 5, 2, 4, 6, 9, 9, 6], 3))
