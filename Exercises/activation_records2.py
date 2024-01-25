@@ -22,3 +22,9 @@ def p(x,a):
     print(d)
 
 p(1,2)
+
+
+
+
+# What's the value of variable d?
+# 34
