@@ -9,7 +9,6 @@
 def verifica_liste(L1,L2,k):
     for i in range(0, len(L1)-k+1):
         if condition(L1[i:i+k],L2):
-            print(L1[i:i+k])
             return True
     return False
 
@@ -21,7 +20,6 @@ def condition(L1,L2):
     next_i=0
     for x in L1:
         if x in L2[next_i:]:
-            print(L2[next_i:])
             i_match=L2.index(x)
             next_i=i_match+1
         else:
